@@ -2,6 +2,7 @@ namespace Properties
 {
     using System;
     using System.Linq;
+    using Libreria;
 
     /// <summary>
     /// The seeds of italian cards.
@@ -40,9 +41,17 @@ namespace Properties
         public static void Main()
         {
             DeckFactory df = new DeckFactory();
+            Card my = new Card("TRE", "DENARI", 2);
 
-            df.SetNames(Enum.GetNames(typeof(ItalianNames)).ToList());
-            df.SetSeeds(Enum.GetNames(typeof(ItalianSeeds)).ToList());
+
+            //Test uso libreria
+            /*
+            Class1 c1 = new Class1();
+            c1.SayHello();
+            */
+
+            df.Names = (Enum.GetNames(typeof(ItalianNames)).ToList());
+            df.Seeds = (Enum.GetNames(typeof(ItalianSeeds)).ToList());
 
             // TODO understand string format convention
             Console.WriteLine("The {1} deck has {0} cards: ", df.GetDeckSize(), "italian");
@@ -50,6 +59,11 @@ namespace Properties
             foreach (Card c in df.GetDeck())
             {
                 Console.WriteLine(c);
+                //Test Equals
+                if (c.Equals(my))
+                {
+                    Console.WriteLine("Siamo uguali");
+                }
             }
         }
     }
